@@ -1,0 +1,6 @@
+#!/bin/sh
+
+XDG_CONFIG_HOME=/neovim/config \
+XDG_DATA_HOME=/neovim/data \
+NVIM_LOG_FILE=/neovim/nvim.log \
+nvim "$@"

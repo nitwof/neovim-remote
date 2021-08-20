@@ -1,0 +1,31 @@
+{
+	"name": "neovim-remote",
+	"dockerComposeFile": [
+		"docker-compose.yml"
+	],
+	"runServices": ["workspace"],
+	"service": "workspace",
+	"shutdownAction": "stopCompose",
+	"workspaceFolder": "/workspace",
+
+	"settings": {
+        "go.lintTool": "golangci-lint",
+        "go.lintFlags": [
+            "--fast"
+        ],
+        "go.lintOnSave": "workspace",
+		"terminal.integrated.defaultProfile.linux": "bash",
+		"terminal.integrated.profiles.linux": {
+			"bash": {
+				"path": "bash"
+			}
+		}
+	},
+
+	// Add the IDs of extensions you want installed when the container is created.
+	"extensions": [
+		"be5invis.toml",
+        "ms-azuretools.vscode-docker",
+		"golang.go",
+	]
+}
