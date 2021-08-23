@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"fmt"
 	"os/exec"
 
 	"github.com/spf13/cobra"
@@ -15,8 +16,9 @@ var containerCmd = &cobra.Command{
 		Lets you use a Docker container as a full-featured development environment
 	`,
 	Run: func(cmd *cobra.Command, args []string) {
-		err := exec.Command("docker-compose", "-f", "./.devcontainer/docker-compose.yml", "build")
-		cobra.CheckErr(err)
+		c := exec.Command("docker-compose", "-f", "./.devcontainer/docker-compose.yml", "build")
+		fmt.Println(c.String())
+		cobra.CheckErr(c.Run())
 	},
 }
 
