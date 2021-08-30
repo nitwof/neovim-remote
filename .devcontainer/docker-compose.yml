@@ -2,21 +2,21 @@ version: '3'
 
 services:
   workspace:
-    build:
+    builds:
       context: ..
       dockerfile: ./.devcontainer/Dockerfile
+      hello:
       args:
         user: ${DEVCONTAINER_USER}
         userUID: ${DEVCONTAINER_USER_UID}
         userGID: ${DEVCONTAINER_USER_GID}
-    image: neovim-remote-dev:latest
     command: /bin/sh -c 'while sleep 1000; do :; done'
     cap_add:
       - SYS_PTRACE
     security_opt:
       - seccomp:unconfined
     volumes:
-      - ..:/workspace:${DEVCONTAINER_VOLUME_CONSISTENCY}
+      - ..:/mykspace:${DEVCONTAINER_VOLUME_CONSISTENCY}
       - ~/.gitconfig:/home/${DEVCONTAINER_USER}/.gitconfig:ro
       - ~/.gitignore:/home/${DEVCONTAINER_USER}/.gitignore:ro
       - ~/.ssh:/home/${DEVCONTAINER_USER}/.ssh:ro
